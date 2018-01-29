@@ -4,51 +4,30 @@ const Joi = require('joi'),
     appHandler = require('../handlers/appHandler');
 
 module.exports = function (server) {
+     // read
+     server.route({
+        method: 'get',
+        path: '/v1/getIpfsApiConfig',
+        config: {
+            handler: appHandler.getIpfsApiConfig,
+            description: 'GET all IPFS Config Details',
+            notes: 'Returns a list of configs',
+            tags: ['api'],
+            validate: {
+            }
+        }
+    });
     // read
     server.route({
-        method: 'get',
-        path: '/v1/feeds',
-        config: {
-            handler: appHandler.getFeeds,
-            description: 'GET all available feeds',
-            notes: 'Returns a list of feeds',
-            tags: ['api'],
-            validate: {
-                //No input to validat 
-            }
+    method: 'get',
+    path: '/v1/getIpfsFilesList',
+    config: {
+        handler: appHandler.getIpfsFilesList,
+        description: 'GET all IPFS Files List',
+        notes: 'Returns a list of files',
+        tags: ['api'],
+        validate: {
         }
-    });
-    //read
-    server.route({
-        method: 'get',
-        path: '/v1/feeds/{feedId}',
-        config: {
-            handler: appHandler.getFeed,
-            description: 'GET feed for given id',
-            notes: 'Returns a feed',
-            tags: ['api'],
-            validate: {
-                params: {
-                    feedId: Joi.string()
-                }
-            }
-        }
-    });
-    //write 
-    server.route({
-        method: 'post',
-        path: '/v1/feed',
-        config: {
-            handler: appHandler.createFeed,
-            description: 'Create a new feed',
-            notes: 'Returns a newly created feed',
-            tags: ['api'],
-            validate: {
-                payload: Joi.object({
-                    feedId: Joi.string(),
-                    feedDesc: Joi.string()
-                }),
-            }
-        }
-    });
+    }
+});
 }
