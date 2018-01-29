@@ -1,33 +1,38 @@
-'use strict';
-
-const Joi = require('joi'),
-    appHandler = require('../handlers/appHandler');
-
-module.exports = function (server) {
-     // read
-     server.route({
-        method: 'get',
-        path: '/v1/getIpfsApiConfig',
-        config: {
-            handler: appHandler.getIpfsApiConfig,
-            description: 'GET all IPFS Config Details',
-            notes: 'Returns a list of configs',
-            tags: ['api'],
-            validate: {
-            }
-        }
-    });
-    // read
-    server.route({
-    method: 'get',
-    path: '/v1/getIpfsFilesList',
-    config: {
-        handler: appHandler.getIpfsFilesList,
-        description: 'GET all IPFS Files List',
-        notes: 'Returns a list of files',
-        tags: ['api'],
-        validate: {
-        }
-    }
-});
+{
+  "name": "generate-node-hapi-swagger-rest",
+  "version": "1.0.0",
+  "description": "Boilerplate Node - Hapi - Swagger Rest application",
+  "main": "index.js",
+  "dependencies": {
+    "boom": "^2.8.0",
+    "bunyan": "^1.8.1",
+    "good": "^6.2.0",
+    "good-console": "^6.1.2",
+    "good-file": "^5.0.1",
+    "hapi": "^15.1.1",
+    "hapi-swagger": "^7.2.0",
+    "inert": "^4.0.2",
+    "ipfs-api": "^17.5.0",
+    "joi": "^9.1.0",
+    "lodash": "^3.10.0",
+    "lout": "^6.2.3",
+    "request": "^2.75.0",
+    "vision": "^4.1.0"
+  },
+  "devDependencies": {
+    "code": "^4.0.0",
+    "lab": "^11.2.1",
+    "nodemon": "^1.11.0"
+  },
+  "scripts": {
+    "test": "lab -c",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "DXA8869",
+  "license": "ISC",
+  "engines": {
+    "node": "8.9.x",
+    "npm": "5.6.x"
+  }
 }
